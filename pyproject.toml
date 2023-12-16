@@ -11,8 +11,9 @@ python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
-fastapi = "^0.104.0"
-uvicorn = {extras = ["standar"], version = "^0.23.2"}
+fastapi = "^0.105.0"
+uvicorn = "^0.24.0.post1"
+
 
 
 [tool.poetry.group.linter.dependencies]
