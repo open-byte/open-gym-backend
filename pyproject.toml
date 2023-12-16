@@ -13,6 +13,7 @@ python = "^3.11"
 [tool.poetry.group.dev.dependencies]
 fastapi = "^0.105.0"
 uvicorn = "^0.24.0.post1"
+pre-commit = "^3.6.0"
 
 
 
