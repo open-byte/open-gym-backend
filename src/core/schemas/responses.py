@@ -1,9 +1,8 @@
 from typing import Any, Generic, TypeVar
 
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
-M = TypeVar('M', bound=BaseModel)
+M = TypeVar('M')
 
 
 def schema_extra(schema: dict[str, Any], _: Any) -> None:
@@ -56,21 +55,3 @@ class InformationalResponse(BaseModel):
     status: str = Field(description='Healthcheck status', examples=['success', 'fail'])
     environment: str = Field(description='Application environment', examples=['dev', 'prod'])
     version: str = Field(description='Application version', examples=['1.0.0'])
-
-
-class CJSONResponse(JSONResponse):
-    """
-    This is a custom JSON response class for all API endpoints.
-    """
-
-    def __init__(self, content: Any = None, status_code: int = 200, **kwargs: Any) -> None:
-        """
-        This is a custom JSON response class for all API endpoints.
-
-        Args:
-            content (dict, optional): Response content. Defaults to None.
-            status_code (int, optional): HTTP status code. Defaults to 200.
-        """
-        status_code = content.pop('status_code', status_code)
-
-        super().__init__(content=content, status_code=status_code, **kwargs)

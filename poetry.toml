@@ -1,3 +1,0 @@
-[virtualenvs]
-create = true
-prompt = ".env_p{python_version}"

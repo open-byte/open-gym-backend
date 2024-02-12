@@ -27,13 +27,18 @@ class FastAPIConfig(BaseSettings):
     - openapi_url: Application openapi URL
     """
 
-    title: Optional[str] = 'Open Gym Backend'
-    description: Optional[str] = 'Open Gym Backend API'
+    title: Optional[str] = 'Open Gym Backend API'
+    description: Optional[str] = 'Open Gym Backend API Documentation.'
     version: Optional[str] = '0.0.0'
     debug: Optional[bool] = False
     docs_url: Optional[str] = '/docs'
     redoc_url: Optional[str] = '/redoc'
     openapi_url: Optional[str] = '/openapi.json'
+    servers: Optional[list[dict[str, str]]] = [
+        {'url': 'http://localhost:8000', 'description': 'Local server'},
+        {'url': 'https://dev.backend.open-gym.com', 'description': 'Development server'},
+        {'url': 'https://backend.open-gym.com', 'description': 'Production server'},
+    ]
 
 
 class AppBaseSettings(BaseSettings):
