@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "open-gym-backend"
+version = "0.0.0"
+description = "Backend for Open Gym"
+authors = ["Izcar J. Muñoz Torrez <imunoz@open-byte.dev>"]
+
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psycopg = "^3.1.18"
+
+
+[tool.poetry.group.dev.dependencies]
+fastapi = "^0.105.0"
+uvicorn = "^0.24.0.post1"
+pydantic = "^2.5.3"
+pydantic-settings = "^2.1.0"
+alembic = "^1.13.1"
+sqlmodel = "^0.0.14"
+psycopg = {extras = ["binary"], version = "^3.1.18"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+
+
+[tool.poetry.group.linter.dependencies]
+mypy = "^1.8.0"
+ruff = "^0.1.8"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict=true
+explicit_package_bases=true
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+plugins = ["pydantic.mypy"]
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+
+
+[tool.ruff]
+src =["src"]
+line-length = 100
+fixable = ["F401", "ALL"]
+unfixable = []
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "UP",  # pyupgrade,
+  "I",   # isort
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
